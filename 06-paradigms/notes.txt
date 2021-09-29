@@ -1,0 +1,25 @@
+Emily Ortiz
+APCS
+HW06 -- Paradigms
+2021-09-29
+
+Scheme:
+(display "Hello, world!")
+
+NetLogo:
+observer > print "Hello, world!"
+
+Python:
+print("Hello, world!")
+
+Similarities:
+- 1 line of code
+- Hello world is in quotation marks
+- type code and then hit enter/run
+
+Differences:
+- Choose observer in NetLogo, don't type it
+- Scheme uses display instead of print
+
+Notables:
+- show "_____" returns/prints "_____" in NetLogo
