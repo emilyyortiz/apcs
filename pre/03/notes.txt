@@ -1,0 +1,19 @@
+Notes:
+public static RETURNTYPE NAME(ARUGEMENTS){
+	BODY
+}
+
+void = return type = doesn't return any value
+arguements = variables
+
+
+Exercise:
+1)
+Output:
+No, I wug.
+You wugga wug.
+I wug.
+
+2) main: "No, I " --> zoop --> baffle: "No, I wug" --> ping: "No, I wug."
+
+3) If you invoke baffle at the end of the ping method: program keeps running and printing "wug." on new lines because the functions call each other.
