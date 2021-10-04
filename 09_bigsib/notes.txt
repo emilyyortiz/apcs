@@ -1,0 +1,13 @@
+Emily Ortiz@ero-laptop MINGW64 ~/apcs/09_bigsib (main)
+$ java Greet.java
+error: class found on application class path: Greet
+
+
+Emily Ortiz@ero-laptop MINGW64 ~/apcs/09_bigsib (main)
+$ java BigSib.java
+error: class found on application class path: BigSib
+
+
+Solution: 
+java Greet
+java BigSib
