@@ -12,4 +12,14 @@ $ javac Greet.java
     ^
 1 error
 
+Emily Ortiz@ero-laptop MINGW64 ~/apcs/12_BigSIb (main)
+$ javac Greet.java
+.\BigSib.java:11: error: cannot find symbol
+                return(HelloMsg + "" + name);
+                       ^
+  symbol:   variable HelloMsg
+  location: class BigSib
+1 error
+
+
 
