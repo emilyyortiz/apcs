@@ -21,5 +21,28 @@ $ javac Greet.java
   location: class BigSib
 1 error
 
+Don't know how to use this when it comes up in GitBash:
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#       modified:   BigSib.java
+#       modified:   Greet.java
+#
+# Untracked files:
+#       BigSib_Copy.java
+#
+~
+~
+~
+~
+~
+~
+
+
 
 
