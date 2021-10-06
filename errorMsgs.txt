@@ -1,0 +1,6 @@
+Emily Ortiz@ero-laptop MINGW64 ~/apcs/12_bigsib (main)
+$ javac BigSib.java
+BigSib.java:9: error: non-static variable HelloMsg cannot be referenced from a static context
+    HelloMsg = message;
+    ^
+
