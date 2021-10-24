@@ -4,10 +4,15 @@ public class Driver {
 		Coin mine = new Coin();
       		//test 1st overloaded constructor
       		Coin yours = new Coin( "quarter" );
+		//System.out.println(yours.getUpFace());
+		//System.out.println(yours.getFlipCtr());
       		//test 2nd overloaded constructor
       		Coin wayne = new Coin( "dollar", "heads" );
-      		//test toString() methods of each Coin
-      		/* System.out.println("mine: " + mine);
+      		wayne.reset("heads", 1.0);
+		// test for flip
+		//mine.flip();
+		//test toString() methods of each Coin
+      		System.out.println("mine: " + mine);
       		System.out.println("yours: " + yours);
       		System.out.println("wayne: " + wayne);
       		//test flip() method
@@ -23,6 +28,6 @@ public class Driver {
       		else {
         		System.out.println( "No match. Firestarter you can not be." );
       		}
-      		*/
+
 	}
 }
