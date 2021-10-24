@@ -16,7 +16,7 @@ QCC:
 - The upFace for the "your" coin would be "null", even though it was defined as "heads" in the >
 - After flipping, the wayne coin was returning "tails" even though the bias was set to 1.0 in t>
 
-Time Spent: 1.5 hours
+Time Spent: 2 hours
 */
 
 
