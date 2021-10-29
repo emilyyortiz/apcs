@@ -1,5 +1,5 @@
 /*
-Emily Ortiz + Applesauce, Tasnim Chowdhury + Mary
+Emily Ortiz + Applesauce, Tasnim Chowdhury + Mary, Eric He
 APCS
 HW27 -- FOR the Love of Strings
 2021-10-28
