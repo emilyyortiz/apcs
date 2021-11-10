@@ -1,17 +1,24 @@
-/*
-DISCO
-- str.toUpperCase() gives the uppercase version of String str
+/**
+Ellowyay Unflowersay Arlkesspay (Yellow Sunflower Sparkles)
+Diana Akhmedova + Ajax, Lauren Lee + Bo, Emily Ortiz + Applesauce
+APCS
+L00: Etterbay Odingcay Oughthray Ollaborationcay
+2021-11-09
+Time Spent: 1 hour
 
-QCC
-- Havving issues with letter y
-  - is not putting original output
+DISCO:
+- str.toUpperCase() gives the uppercase version of String str.
+
+QCC:
+- Is not putting original output.
 - How does break work?
-  - When we put break in to replace return, it did not work as we thought it would.
+- When we put break in to replace return, it did not work as we thought it would.
 
-NEW IN V2
-- Additional methods from second skeleton in library
-- Main feature: capitalization
-*/
+NEW IN V2:
+- Additional methods from second skeleton in library.
+- Added capital vowel letters in the VOWELS String.
+- Added capitalization to the output of the first letter of each word/phrase.
+**/
 
 public class Pig {
 
