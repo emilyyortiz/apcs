@@ -1,20 +1,103 @@
 /*
 DISCO
+- str.toUpperCase() gives the uppercase version of String str
 
 QCC
+- Havving issues with letter y
+  - is not putting original output
+- How does break work?
+  - When we put break in to replace return, it did not work as we thought it would.
 
 NEW IN V2
 - Additional methods from second skeleton in library
-
+- Main feature: capitalization
 */
-
 
 public class Pig {
 
-    private static final String VOWELS = "aeiouy";
+    private static final String VOWELS = "aeiouyAEIOUY";
     private static final String CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String PUNCS = ".,:;!?";
 
+  /**
+    boolean hasA(String,String) -- checks for a letter in a String
+    pre:  w != null, letter.length() == 1
+    post: hasA("cat", "a") -> true
+    hasA("cat", "p") -> false
+  **/
+
+  public static boolean hasA( String w, String letter ) {
+    return w.indexOf(letter) != -1;
+  }
+
+  /**
+    boolean isAVowel(String) -- tells whether a letter is a vowel
+    precondition: letter.length() == 1
+  **/
+
+  public static boolean isAVowel( String letter ) {
+    return VOWELS.indexOf( letter ) != -1;
+  }
+
+  /**
+    int countVowels(String) -- counts vowels in a String
+    pre:  w != null
+    post: countVowels("meatball") -> 3
+  **/
+
+  public static int countVowels( String w ) {
+    return allVowels(w).length();
+  }
+
+  /**
+    boolean hasAVowel(String) -- tells whether a String has a vowel
+    pre:  w != null
+    post: hasAVowel("cat") -> true
+    hasAVowel("zzz") -> false
+    **/
+  public static boolean hasAVowel( String w ) {
+    return w.indexOf(w) >= 0;
+  }
+
+  /**
+    String allVowels(String) -- returns vowels in a String
+    pre:  w != null
+    post: allVowels("meatball") -> "eaa"
+    **/
+  public static String allVowels( String w ) {
+    String ans = ""; //init return String
+
+    for( int i = 0; i < w.length(); i++ ) {
+      if ( isAVowel( w.substring(i,i+1) ) )
+        ans += w.substring( i, i+1 ); //grow the return String
+    }
+    return ans;
+  }
+
+  /**
+    String firstVowel(String) -- returns first vowel in a String
+    pre:  w != null
+    post: firstVowel("") --> ""
+    firstVowel("zzz") --> ""
+    firstVowel("meatball") --> "e"
+    **/
+  public static String firstVowel( String w ) {
+    String ans = "";
+
+    if ( hasAVowel(w) ) //Q: Why this necess?
+      ans = allVowels(w).substring(0,1);
+    return ans;
+  }
+
+  /**
+    boolean beginsWithVowel(String) -- tells whether a String begins with a vowel
+    pre:  w != null and w.length() > 0
+    post: beginsWithVowel("apple")  --> true
+    beginsWithVowel("strong") --> false
+    **/
+  public static boolean beginsWithVowel( String w ) {
+    return isAVowel( w.substring(0,1) );
+  }
 
     /*=====================================
       boolean isPunc(String) -- tells whether a character is punctuation
@@ -22,7 +105,6 @@ public class Pig {
       post: isPunc(".") -> true
             isPunc("b") -> false
       =====================================*/
-
 
     public static boolean isPunc( String symbol ) {
 	     return PUNCS.indexOf( symbol ) != -1;
@@ -39,7 +121,6 @@ public class Pig {
         return hasA(CAPS, letter);
     }
 
-
     /*=====================================
       boolean hasPunc(String) -- tells whether a String contains punctuation
       pre:  w != null
@@ -51,14 +132,11 @@ public class Pig {
         for (int i = 0; i < w.length(); i++){
           String letter = w.substring(i, i+1);
           if (hasA(PUNCS, letter)){
-          //  System.out.println("if test");
             return true;
           }
-        //  System.out.println("for loop");
         }
         return false;
     }
-
 
     /*=====================================
       boolean beginsWithUpper(String) -- tells whether 1st letter is uppercase
@@ -67,134 +145,21 @@ public class Pig {
             beginsWithUpper("apple") -> false
       =====================================*/
 
-/**
     public static boolean beginsWithUpper( String w ) {
-	return isUpperCase(w.substring(0,1) );
+	     return isUpperCase(w.substring(0,1) );
     }
-**/
 
-  /**
-    boolean hasA(String,String) -- checks for a letter in a String
-    pre:  w != null, letter.length() == 1
-    post: hasA("cat", "a") -> true
-    hasA("cat", "p") -> false
-  **/
-  public static boolean hasA( String w, String letter ) {
+    /**
+      String engToPig(String) -- converts an English word to Pig Latin
+      pre:  w.length() > 0
+      post: engToPig("apple")  --> "appleway"
+      engToPig("strong") --> "ongstray"
+      engToPig("java")   --> "avajay"
+      **/
 
-    return w.indexOf(letter) != -1;
-
-    /* equiv code, wo using indexOf()...
-       boolean ans = false;
-       for( int i = 0; i < w.length(); i++ ) {
-       if ( w.substring(i,i+1).equals(letter) ) {
-       ans = true;
-       //Q: is there a more efficient way?
-       }
-       }
-       return ans;
-    */
-  }//end hasA()
-
-
-  /**
-    boolean isAVowel(String) -- tells whether a letter is a vowel
-    precondition: letter.length() == 1
-    **/
-  public static boolean isAVowel( String letter ) {
-    return VOWELS.indexOf( letter ) != -1;
-  }
-
-
-  /**
-    int countVowels(String) -- counts vowels in a String
-    pre:  w != null
-    post: countVowels("meatball") -> 3
-    **/
-  public static int countVowels( String w ) {
-
-    return allVowels(w).length();
-
-    /* long version using for
-       int numVowels = 0; //init vowels counter var
-       //must touch each letter in word, so use FOR
-       for( int i = 0; i < w.length(); i++ ) {
-       if ( isAVowel( w.substring(i,i+1) ) )
-       numVowels++;
-       }
-       return numVowels;
-    */
-  }
-
-
-  /**
-    boolean hasAVowel(String) -- tells whether a String has a vowel
-    pre:  w != null
-    post: hasAVowel("cat") -> true
-    hasAVowel("zzz") -> false
-    **/
-  public static boolean hasAVowel( String w ) {
-    return w.indexOf(w) >= 0;
-  }
-
-
-  /**
-    String allVowels(String) -- returns vowels in a String
-    pre:  w != null
-    post: allVowels("meatball") -> "eaa"
-    **/
-  public static String allVowels( String w ) {
-
-    String ans = ""; //init return String
-
-    for( int i = 0; i < w.length(); i++ ) {
-
-      if ( isAVowel( w.substring(i,i+1) ) )
-        ans += w.substring( i, i+1 ); //grow the return String
-    }
-    return ans;
-  }
-
-
-  /**
-    String firstVowel(String) -- returns first vowel in a String
-    pre:  w != null
-    post: firstVowel("") --> ""
-    firstVowel("zzz") --> ""
-    firstVowel("meatball") --> "e"
-    **/
-  public static String firstVowel( String w ) {
-
+  public static String engToPig( String og ) {
     String ans = "";
-
-    if ( hasAVowel(w) ) //Q: Why this necess?
-      ans = allVowels(w).substring(0,1);
-
-    return ans;
-  }
-
-
-  /**
-    boolean beginsWithVowel(String) -- tells whether a String begins with a vowel
-    pre:  w != null and w.length() > 0
-    post: beginsWithVowel("apple")  --> true
-    beginsWithVowel("strong") --> false
-    **/
-  public static boolean beginsWithVowel( String w ) {
-    return isAVowel( w.substring(0,1) );
-  }
-
-
-  /**
-    String engToPig(String) -- converts an English word to Pig Latin
-    pre:  w.length() > 0
-    post: engToPig("apple")  --> "appleway"
-    engToPig("strong") --> "ongstray"
-    engToPig("java")   --> "avajay"
-    **/
-  public static String engToPig( String w ) {
-
-    String ans = "";
-    w = w.toLowerCase();
+    String w = og.toLowerCase();
 
   /*
     if ( beginsWithVowel(w) )
@@ -209,34 +174,47 @@ public class Pig {
       if( isAVowel(w.substring(i,i+1)) ) {
         if( i == 0 && isAVowel(w.substring(i,i+1)) && !(w.substring(i,i+1).equals("y")) ) {
           ans = w + "way";
+          if (beginsWithUpper(og)){ ans = Capitalize (ans); }
           return ans;
         }
         else if( i != 0 && isAVowel(w.substring(i,i+1)) && !(w.substring(i,i+1).equals("y")) ) {
           ans = w.substring(i) + w.substring(0,i) + "ay";
+          if (beginsWithUpper(og)){ ans = Capitalize (ans); }
           return ans;
         }
         else {
           ans = w.substring(i) + w.substring(0,i) + "ay";
+          if (beginsWithUpper(og)){ ans = Capitalize (ans); }
+          return ans;
         }
       }
-    }
-
+    }   if (beginsWithUpper(og)){ ans = Capitalize (ans); }
     return ans;
   }
 
+public static String Capitalize(String str){
+    String firstLetter = str.substring(0, 1);
+    firstLetter = firstLetter.toUpperCase();
+    String ans = firstLetter + str.substring(1);
+    return ans;
+}
 
   public static void main( String[] args ) {
+    /*
     System.out.println(isUpperCase("A"));
     System.out.println(isUpperCase("a"));
     System.out.println(hasPunc("Hi."));
     System.out.println(hasPunc("Hi"));
-    /*for( String word : args ) {
+    System.out.println(beginsWithUpper("Apple"));
+    System.out.println(beginsWithUpper("apple"));
+    */
+    for( String word : args ) {
       System.out.println( "allVowels \t" + allVowels(word) );
       System.out.println( "firstVowels \t" + firstVowel(word) );
       System.out.println( "countVowels \t" + countVowels(word) );
       System.out.println( "engToPig \t" + engToPig(word) );
       System.out.println( "---------------------" );
-    }*/
+    }
 
   }//end main()
 
