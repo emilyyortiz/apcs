@@ -1,0 +1,12 @@
+Emily Ortiz
+APCS
+HW36 -- All Quacked Up
+2021-11-19
+Time Spent: 
+
+- first error message truely reliable, fix one error at a time
+- debugg by bisection: make a copy of half the code
+- delete half the time to see when an error comes up
+- no base case causes infinite recursion
+- use temporary variables, make code clearer and more concise
+- explaining problem to someone (ducky!) might help you see the answer
