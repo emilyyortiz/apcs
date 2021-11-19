@@ -2,7 +2,7 @@ Emily Ortiz
 APCS
 HW36 -- All Quacked Up
 2021-11-19
-Time Spent: 
+Time Spent: .3 hours
 
 - first error message truely reliable, fix one error at a time
 - debugg by bisection: make a copy of half the code
