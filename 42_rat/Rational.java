@@ -1,17 +1,17 @@
 /*****************************************************
  * Perfect Purple Petunias (John Gupta-She, Lauren Lee, Emily Ortiz)
  * APCS pd08
- * HW41 -- Be Rational
+ * HW42 -- Be More Rational
  * 2021-12-1
  * time spent: 0.5 hrs
  *****************************************************/
 
  /*****************************************************
 DISCO:
-* default is a key word
-* double is the most precise floating point primitive
+*beware of instance variables/variables created by a function, java is pass-by-value, not reference!
+*map out steps before starting to save you trouble
 QCC:
-* why does the toString() method have to be public?
+* why does java throw up a "missing return statement" error when all cases are accounted for?
   *****************************************************/
 
 public class Rational{
@@ -49,40 +49,55 @@ public class Rational{
   }
 
   private void divide(Rational a){
-    if (a.numerator != 0){
-      numerator = numerator * a.denominator;
-      denominator = denominator * a.numerator;
-    } else {
-      System.out.println("Cannot divide by 0.");
-    }
+    numerator = numerator * a.denominator;
+    denominator = denominator * a.numerator;
   }
 
   private void add(Rational a){
-    numerator = numerator * a.denominator + a.numerator * denominator;
-    denominator = denominator * a.denominator;
+    numerator = numerator*a.denominator + a.numerator*denominator;
+    denominator = a.denominator*denominator;
   }
 
   private void subtract(Rational a){
-    numerator = numerator * a.denominator - a.numerator * denominator;
-    denominator = denominator * a.denominator;
+    numerator = numerator*a.denominator - a.numerator*denominator;
+    denominator = a.denominator * denominator;
+  }
+
+  private static int gcd(int num, int den){
+    if (num == 0){
+      return den;
+    }
+    else{
+      while (num != den) {
+        if (num > den) {
+          num = num - den;
+        }
+        else if (den > num) {
+          den = den - num;
+        }
+      }
+      return num;
+    }
   }
 
   private int gcd(){
-    int i = 1;
-    int currentGCD = 1;
-    int lesserNum = numerator;
-    if (numerator > denominator) {
-        lesserNum = denominator;
+    return gcd(numerator, denominator);
+  }
+
+  private void reduce(){
+    int gcd = gcd();
+    numerator = numerator / gcd;
+    denominator = denominator / gcd;
+  }
+
+  private int compareTo(Rational a){
+    if (numerator * a.denominator == denominator * a.numerator){
+      return 0;
+    } else if (numerator * a.denominator > denominator * a.numerator){
+      return 1;
+    } else {
+      return -1;
     }
-    while (i <= lesserNum){
-        if ( (numerator % i == 0) && (denominator % i == 0)){
-            currentGCD = i;
-        }
-        i++;
-    }
-    if (numerator == denominator) {
-        currentGCD = numerator;
-    } return currentGCD;
   }
 
   public static void main(String[] args){
@@ -110,13 +125,28 @@ public class Rational{
     System.out.println("value of s after division: " + s + " ...1/2");
     r.add(s);
     System.out.println("value of r after addition: " + r + "...20/32");
-    System.out.println("value of s after addition: " + s + "...1/3");
+    System.out.println("value of s after addition: " + s + "...1/2");
+    System.out.println("gcd of r: " + r.gcd() + "...4");
+    r.subtract(s);
+    System.out.println("value of r after subtraction: " + r + "...8/64");
+    System.out.println("value of s after subtraction: " + s + "...1/2");
+    System.out.println("gcd of r: " + r.gcd() + "...8");
+    r.reduce();
+    s.reduce();
+    System.out.println("value of r after reduction: " + r + "...1/8");
+    System.out.println("value of s after reduction: " + s + "...1/2");
+    System.out.println("r compared to s: " + r.compareTo(s) + "...-1");
+    System.out.println("s compared to r: " + s.compareTo(r) + "...1");
+    s.numerator = 2;
+    r.numerator = 2;
+    s.denominator = 3;
+    r.denominator = 3;
+    System.out.println("s compared to r: " + s.compareTo(r) + "...0");
 
 /**
     System.out.println("//====================================");
     Rational r3 = new Rational(2, 3);
     Rational r4 = new Rational();
-
     System.out.println(r3);
     System.out.println(r4);
     System.out.println(r3.floatValue());
