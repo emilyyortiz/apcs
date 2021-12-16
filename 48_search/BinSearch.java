@@ -7,7 +7,7 @@ public class BinSearch
 {
 
   /**
-     int binSearch(Comparable[],Comparable) -- searches an array of 
+     int binSearch(Comparable[],Comparable) -- searches an array of
      Comparables for target Comparable
      pre:  input array is sorted in ascending order
      post: returns index of target, or returns -1 if target not found
@@ -16,8 +16,8 @@ public class BinSearch
   {
     //uncomment exactly 1 of the 2 stmts below:
 
-    return binSearchIter( a, target, 0, a.length-1 );
-    //return binSearchRec( a, target, 0, a.length-1 );
+    //return binSearchIter( a, target, 0, a.length-1 );
+    return binSearchRec( a, target, 0, a.length-1 );
   }
 
 
@@ -29,10 +29,18 @@ public class BinSearch
     int tPos = -1; //init return var to flag value -1
 
     int m = (lo + hi) / 2; //init mid pos var
-
-
-
-    return tPos;
+    if (hi == lo && a[m].equals(target)){
+      tPos = m;
+    }else if (hi != lo) {
+      if (a[m].compareTo(target)<0){
+        return binSearchRec(a, target, m+1, hi);
+      } else if (a[m].compareTo(target)>0){
+        return binSearchRec(a, target, lo, m-1);
+      } else if (a[m].equals(target)){
+        tPos = m;
+          }
+      }
+      return tPos;
   }//end binSearchRec
 
 
@@ -44,9 +52,22 @@ public class BinSearch
     int tPos = -1; //init return var to flag value -1
     int m = (lo + hi) / 2; //init mid pos var
 
-    while( /* ? */ ) { // run until lo & hi cross
+    while( lo != hi ) { // run until lo & hi cross
 
-      //update mid pos var
+      if (a[m].compareTo(target)<0){//update mid pos var
+        lo = m + 1;
+        m = (lo+hi)/2;
+      } else if (a[m].compareTo(target)>0) {
+        hi = m-1;
+        m = (lo+hi)/2;
+      } else if (a[m].equals(target)){
+          tPos = m;
+          break;
+      }
+    }
+    if (a[m].equals(target)){
+      tPos = m;
+    }
 
       // target found
 
@@ -54,7 +75,6 @@ public class BinSearch
 
       // value at mid index lower than target
 
-    }
     return tPos;
   }//end binSearchIter
 
@@ -78,7 +98,7 @@ public class BinSearch
 
   // utility/helper fxn to display contents of an array of Objects
   private static void printArray( Comparable[] arr ) {
-    String output = "[ "; 
+    String output = "[ ";
 
     for( Comparable c : arr )
 	    output += c + ", ";
@@ -94,48 +114,39 @@ public class BinSearch
   //minimal -- augment as necessary
   public static void main ( String[] args )
   {
-
+    System.out.println((2+3)/2);
     /*----------------------------------------------------
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     System.out.println("\nNow testing binSearch on Comparable array...");
-
     //Declare and initialize array of Comparables
     Comparable[] iArr = { 2, 4, 6, 8, 6, 42 };
     printArray( iArr );
     System.out.println( "iArr1 sorted? -- " + isSorted(iArr) );
-
     Comparable[] iArr2 = { 2, 4, 6, 8, 13, 42 };
     printArray( iArr2 );
     System.out.println( "iArr2 sorted? -- " + isSorted(iArr2) );
-
     Comparable[] iArr3 = new Integer[10000];
     for( int i = 0; i < iArr3.length; i++ ) {
     iArr3[i] = i * 2;
     }
-
     printArray( iArr3 );
     System.out.println( "iArr3 sorted? -- " + isSorted(iArr2) );
-
-    //search for 6 in array 
+    //search for 6 in array
     System.out.println( binSearch(iArr2,2) );
     System.out.println( binSearch(iArr2,4) );
     System.out.println( binSearch(iArr2,6) );
     System.out.println( binSearch(iArr2,8) );
     System.out.println( binSearch(iArr2,13) );
     System.out.println( binSearch(iArr2,42) );
-
-    //search for 43 in array 
+    //search for 43 in array
     System.out.println( binSearch(iArr2,43) );
-
     System.out.println( "now testing binSearch on iArr3..." );
     System.out.println( binSearch(iArr3,4) );
     System.out.println( binSearch(iArr3,8) );
     System.out.println( binSearch(iArr3,5) );
-
-    //search for 43 in array 
+    //search for 43 in array
     System.out.println( binSearch(iArr3,43) );
-    ====================================================*/
+    /*====================================================*/
 
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
