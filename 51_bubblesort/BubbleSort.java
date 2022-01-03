@@ -65,7 +65,6 @@ public class BubbleSort
       int i = data.length-1;
       while(int i >= 0){
           int a = (data[i]);
-          int b = (data[ i]);
           if (data[data.length - i] < data[data.length - i - 1]){
 
           }
