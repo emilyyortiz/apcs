@@ -1,0 +1,19 @@
+Emily Ortiz
+APCS Pd 6
+HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle
+2022-02-07
+time spent: 0.5 hr
+
+DISCO
+* We are using merge sort.
+
+QCC
+* Does the deck of cards have to be divided exactly evenly in the very beginning?
+* How should you divide cards if you don't have an even number?
+* Is it possible to sort a deck of 52 cards with 30 something students?
+* This doesn't really make sense to me: let's say you have two cards, why would you give those to two people only to have them returned to you. Couldn't you just sort your two cards then? I guess this is more efficient/ makes more sense for a computer, but I am struggling to wrap my head around sorting a deck of cards like this.
+
+THINKER FIRMWARE
+* If you have more than one card, divide your cards evenly between two other people.
+* Once you have one card, return it to who gave it to you.
+* When cards are returned to you, sort them and return them to the next person.
