@@ -19,19 +19,33 @@ public class MergeSort
   {
     int aCtr = 0;
     int bCtr = 0;
-    int[] output = new int[a.length() + b.length()];
+    int lengtha = a.length;
+    int lengthb = b.length;
+    int[] output = new int[a.length + b.length];
 
-    for (int i = 0; i < output.length(); i++){
-      if ( (aCtr < a.length()) && bCtr < b.length()){
-        
-      if (a[aCtr] < b[bCtr]){
+    for (int i = 0; i < output.length; i++){
+
+      if  ( (aCtr != lengtha) && (bCtr != lengthb) ){
+        if(a[aCtr] < b[bCtr]){
+          output[i] = a[aCtr];
+          aCtr ++;
+        } else {
+          output[i] = b[bCtr];
+          bCtr ++;
+        }
+      } else if (aCtr == lengtha) {
+          // if(bCtr != lengthb){
+          //   output[i] = b[bCtr];
+          //   bCtr++;
+          // }
+          output[i] = b[bCtr];
+          bCtr ++;
+      } else {
         output[i] = a[aCtr];
         aCtr ++;
-      } else {
-        output[i] = b[bCtr];
-        bCtr++;
       }
     }
+
     return output;
   }//end merge()
 
@@ -41,15 +55,44 @@ public class MergeSort
    * Sorts input array using mergesort algorithm
    * Returns sorted version of input array (ascending)
    ******************************************************/
-  // public static int[] sort( int[] arr )
-  // {
-  //   int[] firstHalf;
-  //   int[] lastHalf;
-  //   // populate firstHalf
-  //   //for (int i = 0; i < arr.length()/2; i ++){
-  //
-  //   //}
-  // }//end sort()
+  public static int[] sort( int[] arr )
+  {
+    int mid = arr.length/2;
+    int[] firsthalf = new int[mid];
+    int[] secondhalf = new int[mid + 1];
+
+    if(arr.length <= 1){
+      return arr;
+    } else {
+      for(int i = 0; i < mid; i++){
+        firsthalf[i] = arr[i];
+      }
+      for(int i = mid; i < arr.length; i++){
+        secondhalf[i-mid] = arr[i];
+      }
+    }
+      return merge(sort(firsthalf), sort(secondhalf));
+/*
+merge sort first half and second half
+sort first half split into first and second firsthalf
+if size = 1, return array
+*/
+
+      //sort()
+      /*
+      int[] firsthalf = new int[mid + 1];
+      int[] secondhalf = new int[mid + 1];
+
+      for(int i = 0; i < mid; i++){
+        firsthalf[i] = arr[i];
+      }
+      for(int i = mid; i < arr.length; i++){
+        secondhalf[i-mid] = arr[i];
+      }
+      return merge(sort(firsthalf), sort(secondhalf));
+      */
+
+  }//end sort()
 
 
 
@@ -74,6 +117,7 @@ public class MergeSort
   //main method for testing
   public static void main( String [] args )
   {
+
       int[] arr0 = {0};
       int[] arr1 = {1};
       int[] arr2 = {1,2};
@@ -88,19 +132,19 @@ public class MergeSort
       mess(arr3);
       printArray( arr3 );
 
-    /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
       System.out.println("\nMerging arr1 and arr0: ");
       printArray( merge(arr1,arr0) );
 
+
       System.out.println("\nMerging arr4 and arr6: ");
       printArray( merge(arr4,arr6) );
-
+/*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~*/
       System.out.println("\nSorting arr4-7...");
       printArray( sort( arr4 ) );
       printArray( sort( arr5 ) );
       printArray( sort( arr6 ) );
       printArray( sort( arr7 ) );
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
 }//end class MergeSort
