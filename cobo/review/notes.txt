@@ -1,0 +1,7 @@
+HEADING
+
+ACTIVITY 5
+idea: username generator
+- takes in a string
+- removes non-alphabetic characters
+- returns all lowercase username with "_" instead of " "
