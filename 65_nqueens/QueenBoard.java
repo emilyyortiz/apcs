@@ -1,3 +1,10 @@
+// Team Blue Pandas (Jacob Ng, PreGuac, Andrew Piatetsky, Burnt Peanut, Emily Ortiz, Applesauce)
+// APCS pd6
+// HW65: How Many Queens Can a Thinker Place, If a Thinker Can Place Queens...
+// 2022-02-16
+// time spent: 2hours
+
+
 /***
  * class QueenBoard
  * Generates solutions for N-Queens problem.
@@ -27,7 +34,7 @@ public class QueenBoard
    */
   public boolean solve()
   {
-    return false;
+    return solveH(0);
   }
 
 
@@ -36,17 +43,43 @@ public class QueenBoard
    */
   private boolean solveH( int col )
   {
+    if (col >= _board.length) {
+      return true;
+    }
+    for (int i = 0; i < _board.length; i++) {
+      if (addQueen(i, col)) {
+        if (solveH(col+1) == false) {
+          removeQueen(i, col);
+        }
+        else {
+          return true;
+        }
+      }
+    }
     return false;
   }
 
-
+  /** Print board, a la toString...
+      Except:
+      all negs and 0's replaced with underscore
+      all 1's replaced with 'Q'
+  */
   public void printSolution()
   {
-    /** Print board, a la toString...
-        Except:
-        all negs and 0's replaced with underscore
-        all 1's replaced with 'Q'
-    */
+    String ans = "";
+    for( int r = 0; r < _board.length; r++ ) {
+      for( int c = 0; c < _board[0].length; c++ ) {
+        if (_board[r][c] <= 0) {
+          ans+= "_";
+        }
+        if (_board[r][c] == 1) {
+          ans+="Q";
+        }
+        // ans += _board[r][c]+"\t";
+      }
+      ans += "\n";
+    }
+    System.out.println(ans);
   }
 
 
@@ -110,7 +143,7 @@ public class QueenBoard
    * precondition:
    * postcondition:
    */
-  public String  toString()
+  public String toString()
   {
     String ans = "";
     for( int r = 0; r < _board.length; r++ ) {
@@ -127,36 +160,41 @@ public class QueenBoard
   public static void main( String[] args )
   {
     QueenBoard b = new QueenBoard(5);
-    System.out.println(b);
-    /** should be...
-       0	0	0	0	0
-       0	0	0	0	0
-       0	0	0	0	0
-       0	0	0	0	0
-       0	0	0	0	0
-    */
+    // b.printSolution();
+    // System.out.println(b);
+    // /** should be...
+    //    0	0	0	0	0
+    //    0	0	0	0	0
+    //    0	0	0	0	0
+    //    0	0	0	0	0
+    //    0	0	0	0	0
+    // */
 
-    b.addQueen(3,0);
-    b.addQueen(0,1);
-    System.out.println(b);
-    /** should be...
-       0	1	-1	-2	-1
-       0	0	-2	0	0
-       0	-1	0	-1	0
-       1	-1	-1	-1	-2
-       0	-1	0	0	0
-    */
+    // b.addQueen(3,0);
+    // b.addQueen(0,1);
+    // b.printSolution();
+    // System.out.println(b);
+    // /** should be...
+    //    0	1	-1	-2	-1
+    //    0	0	-2	0	0
+    //    0	-1	0	-1	0
+    //    1	-1	-1	-1	-2
+    //    0	-1	0	0	0
+    // */
 
-    b.removeQueen(3,0);
-    System.out.println(b);
-    /** should be...
-       0	1	-1	-1	-1
-       0	0	-1	0	0
-       0	0	0	-1	0
-       0	0	0	0	-1
-       0	0	0	0	0
-    */
+    // b.removeQueen(3,0);
+    // b.printSolution();
+    // System.out.println(b);
+    // /** should be...
+    //    0	1	-1	-1	-1
+    //    0	0	-1	0	0
+    //    0	0	0	-1	0
+    //    0	0	0	0	-1
+    //    0	0	0	0	0
+    // */
 
+    System.out.println(b.solve());
+    b.printSolution();
   }
 
 }//end class
