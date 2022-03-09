@@ -110,7 +110,7 @@ public class QuickSelect{
         if(s == (y-1)){
             return piv_Value;
         }else if(s < (y -1)){ //index of pivot less than where you want it
-            return fastSelect(y-s,array, s, end, end);
+            return fastSelect(y,array, s, end, end);
         }else{// index of pivot greater than where you want it                                                          //if(s > (y - 1) )
             return fastSelect(y, array, first, s-1, s-1);
         }
