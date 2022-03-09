@@ -2,7 +2,7 @@
 // APCS pd6
 // HW72: So So Fast
 // 2022-03-08
-// Time spent:
+// Time spent: 2 hours
 
 /*
 DISCO
