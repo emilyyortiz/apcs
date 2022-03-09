@@ -19,7 +19,7 @@ It doesn't matter what we use as the pivot because the S value(place of the part
 To stay consistent we'll use the last index as the pivot whenever we use partition.
 
 ALGO
-Run partition on the array with the last index being the pivot. If S (place of the partition) = y then return the pivot value. Else:
+Run partition on the array with the last index being the pivot. If S (place of the partition) = y - 1 then return the pivot value. Else:
     - If S is less than y, we know that the values on the left of s are also smaller than y so we need to look at the values to the right of s.
         -Run partition again but change the range from s to the end and subtract s from y.
     - If S is more than y, we know that the values on the right of s are also greater than y so we need to look at the values to the left of s.
@@ -30,7 +30,7 @@ WORST CASE SCENARIO: After n partitions the yth value is found. In our case,afte
 Include test cases in main() method illustrating each best- and worst-case scenario.
 */
 
-public class FastSelect{
+public class QuickSelect{
 
      private static int[] foo = {7,1,5,12,3};
      private static int[] temper = {1,3,5,12,7};
@@ -72,7 +72,8 @@ public class FastSelect{
     }
 
     public static int partition( int arr[], int first, int end, int pivot){
-	    printArr(arr);
+      System.out.println("start of partition:");
+      printArr(arr);
 	    int v = arr[pivot];
 		  swap(pivot, end, arr);
 		  int s = first;  //where the pivot will end up at the end of function aka where the array is split
@@ -84,6 +85,7 @@ public class FastSelect{
 			}
 		}
 		swap(end, s, arr);
+    System.out.println("end of partition");
 		printArr(arr);
 		return s;
     }
@@ -91,6 +93,7 @@ public class FastSelect{
     public static int fastSelect(int y, int array[], int first, int end, int pivot){
         int s = 0;
         //int length = array.length - 1;
+        System.out.print("start of fastSelect: ");
         printArr(array);
         //System.out.println();
         int piv_Value = array[pivot];
@@ -130,11 +133,11 @@ public class FastSelect{
     //System.out.println();
 		//System.out.println(fastSelect(3, foo, 0, 4, 2));
 
-    System.out.println(fastSelect(1, foo, 0, 4, 4));
-    //printArr(foo);
-    System.out.println();
-    System.out.println(fastSelect(2, foo1, 0, 4, 4));
-    System.out.println();
+    // System.out.println(fastSelect(1, foo, 0, 4, 4));
+    // //printArr(foo);
+    // System.out.println();
+    // System.out.println(fastSelect(2, foo1, 0, 4, 4));
+    // System.out.println();
     System.out.println(fastSelect(3, foo2, 0, 4, 4));
     System.out.println();
     System.out.println(fastSelect(4, foo3, 0, 4, 4));         // doesn't work
