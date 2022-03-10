@@ -1,30 +1,30 @@
-// Clyde Sinclair
-// APCS pd0
-// HW71 -- Reading for intent, tracing for VICTORY
-// 2022-03-07m
-// time spent:  hrs
+// Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz)
+// APCS pd6
+// HW73: All About the About Face
+// 2022-03-09
+// time spent: 0.75 hours
 
 /***
  * class Parition (née Mysterion)
- * 
+ *
  * <h1>MYSTERION is PARTITION</h1>
- * The Mysterion method ... <YOUR TRIO'S DESCRIPTION HERE> 
+ * The Mysterion method ... <YOUR TRIO'S DESCRIPTION HERE>
  * <p>
  * <b>Note:</b> BLAH blah blah, yakkety schmakketty...
  * @author  Trey Parker, Matt Stone
  * @version 3.1415926535897932384626433
- * @since   2022-03-08t 
+ * @since   2022-03-08t
  *
  * algo as pseudocode:
  * ------------------------------
  *     v = arr[c]
- *     swap arr[c], arr[b]  
+ *     swap arr[c], arr[b]
  *     s = a
  *     for i in [a..b-1]
  *         if arr[i] < v
  *             swap arr[s], arr[i]
  *             s+=1
- *     swap arr[b], arr[s] 
+ *     swap arr[b], arr[s]
  **/
 
 
@@ -39,7 +39,7 @@ public class Partition
     o[y] = tmp;
   }
 
-  //print input array 
+  //print input array
   public static void printArr( int[] a )
   {
     for ( int o : a )
@@ -72,20 +72,29 @@ public class Partition
 
   /**
    * int partition(int[],int,int,int)
-   * DESCRIP
-   * 
+   * The pvtPos is the same as the hiPos.
+   * Because on either side of any previous pvtVal(s) the array is unsorted,
+   * there is no way to know whether a chosen pvtVal will end up being in the
+   * middle after the array is partitioned without actually trying it out.
+   * Similarly, there is no way to choose a pvtPos that corresponds to the
+   * pvtVal that ends up in the middle after partitioning without using trial
+   * and error to find it.
+   * So, it is simpler and more time-efficient to just choose a convention for
+   * deciding an arbitrary pvtPos and keeping consistent. We (arbitrarily)
+   * chose to have the pvtPos be the last value in the array section of interest.
+   *
    * @param arr input array of ints
-   * @param loPos   
+   * @param loPos
    * @param hiPos
-   * @param pvtPos
-   * @return int position of 
+   * @param pvtPos //removed after refactoring
+   * @return int position of
    *
    */
-  public static int partition( int arr[], int loPos, int hiPos, int pvtPos)
+  public static int partition( int arr[], int loPos, int hiPos)
   {
-    int v = arr[pvtPos];
+    int v = arr[hiPos]; //hiPos = pvtPos (arbitrary)
 
-    swap( pvtPos, hiPos, arr);
+    // swap( pvtPos, hiPos, arr); //no longer necessary (swaps w/ itself)
     int s = loPos;
 
     for( int i = loPos; i < hiPos; i++ ) {
@@ -112,42 +121,45 @@ public class Partition
 
     // run partition on each array,
     // holding loPos & hiPos fixed, varying pvtPos...
-    for( int testPIVOT = 0; testPIVOT < 5; testPIVOT++ ) {
+    //for( int testPIVOT = 0; testPIVOT < 5; testPIVOT++ ) {
       System.out.println("arr1: ");
       printArr(arr1);
-      partition(arr1,0,4,testPIVOT);
-      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos=" 
-                         + testPIVOT +"...");
+      //partition(arr1,0,4,testPIVOT);
+      partition(arr1,0,4); //refactored
+      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos="
+                         + "hiPos" +"...");
       printArr(arr1);
       System.out.println("-----------------------");
 
       System.out.println("arr3:");
       printArr(arr3);
-      partition(arr3,0,4,testPIVOT);
-      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos=" 
-                         + testPIVOT +"...");
+      //partition(arr3,0,4,testPIVOT);
+      partition(arr3,0,4); //refactored
+      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos="
+                         + "hiPos" +"...");
       printArr(arr3);
       System.out.println("-----------------------");
 
       System.out.println("arr4:");
       printArr(arr4);
-      partition(arr4,0,4,testPIVOT);
-      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos=" 
-                         + testPIVOT +"...");
+      //partition(arr4,0,4,testPIVOT);
+      partition(arr4,0,4); //refactored
+      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos="
+                         + "hiPos" +"...");
       printArr(arr4);
       System.out.println("-----------------------");
 
       System.out.println("arr5:");
       printArr(arr5);
-      partition(arr5,0,4,testPIVOT);
-      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos=" 
-                         + testPIVOT +"...");
+      //partition(arr5,0,4,testPIVOT);
+      partition(arr5,0,4); //refactored
+      System.out.println("after partition w/ loPos=0, hiPos=4, pvtPos="
+                         + "hiPos" +"...");
       printArr(arr5);
       System.out.println("-----------------------");
       /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    }
+    //}
   }//end main
 
 }//end class Partition
-  
