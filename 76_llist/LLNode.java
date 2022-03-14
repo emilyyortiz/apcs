@@ -1,9 +1,9 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW75: Nodal Recall
-2022-03-11
-time spent: 0.75 hours
+HW76: We Got a Little Ol' Convoy
+2022-03-14 Mon
+time spent:
 */
 
 /***
@@ -89,13 +89,13 @@ public class LLNode
     System.out.println(first);
 
     // A naive list traversal, has side effects.... ??
-    /*
+
        while( first != null ) {
        System.out.println( first );
        first = first.getNext();
        }
        System.out.println(first);
-    */
+
 
     //Q: when head ptr moves to next node in list, what happens to the node it
     //   just left?

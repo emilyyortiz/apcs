@@ -1,3 +1,11 @@
+/*
+Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
+APCS pd6
+HW76: We Got a Little Ol' Convoy
+2022-03-14 Mon
+time spent:
+*/
+
 /***
  * interface List
  * subset of actual Java List interface
