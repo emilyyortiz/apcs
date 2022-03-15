@@ -1,9 +1,9 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW76: We Got a Little Ol' Convoy
-2022-03-14 Mon
-time spent:
+HW75: Nodal Recall
+2022-03-11
+time spent: 0.75 hours
 */
 
 /***
@@ -42,14 +42,14 @@ public class LLNode
   //--------------v  MUTATORS  v--------------
   public String setCargo( String newCargo )
   {
-    String oldCargo = _cargo;
+    String oldCargo = getCargo();
     _cargo = newCargo;
     return oldCargo;
   }
 
   public LLNode setNext( LLNode newNext )
   {
-    LLNode oldNext = _nextNode;
+    LLNode oldNext = getNext();
     _nextNode = newNext;
     return oldNext;
   }
@@ -62,7 +62,7 @@ public class LLNode
     String retStr = "";
     LLNode temp = this;
     while (temp != null) {
-      retStr += temp._cargo + ", ";
+      retStr += temp.getCargo() + ", ";
       temp = temp.getNext();
     }
     retStr = retStr.substring(0,retStr.length()-2);
@@ -89,13 +89,13 @@ public class LLNode
     System.out.println(first);
 
     // A naive list traversal, has side effects.... ??
-
+    /*
        while( first != null ) {
        System.out.println( first );
        first = first.getNext();
        }
        System.out.println(first);
-
+    */
 
     //Q: when head ptr moves to next node in list, what happens to the node it
     //   just left?
@@ -111,6 +111,7 @@ public class LLNode
           temp = temp.getNext();
         }
         System.out.println(first);
+        //System.out.println(temp);
 
   }//end main
 
