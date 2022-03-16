@@ -18,6 +18,9 @@ public interface List
   //remove node from list, return its data
   public String remove( int index );
 
+  //insert at specified index
+  public void add( int index, String newVal ) ;
+
   //return data in element at position i
   public String get( int i );
 
