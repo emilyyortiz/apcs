@@ -1,10 +1,10 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW76: We Got a Little Ol' Convoy
-2022-03-14
-time spent: 0.75 hours
-KtS consumed: 3
+HW78: Double Up
+2022-03-16
+time spent: 1.5 hours
+KtS consumed: many
 */
 
 /***
@@ -121,6 +121,16 @@ public class DLLNode
         }
         System.out.println(first);
         //System.out.println(temp);
+
+        System.out.println();
+        DLLNode temp2 = first.getNext().getNext();
+        System.out.print(temp2);
+        temp2 = temp2.getPrev();
+        System.out.print(temp2);
+        temp2 = temp2.getPrev();
+        System.out.print(temp2);
+        temp2 = temp2.getPrev();
+
 
   }//end main
 

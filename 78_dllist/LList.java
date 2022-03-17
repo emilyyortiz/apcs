@@ -1,8 +1,8 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW77: Insert|Remove
-2022-03-15
+HW78: Double Up
+2022-03-16
 time spent: 1.5 hours
 KtS consumed: many
 */
@@ -10,34 +10,40 @@ KtS consumed: many
 /*
 DISCO
 Add at index algo is not necessarily the same as remove.
+Find and replace exists
+There's a special case where we have to remove the only element in a size 1 list
 
 QCC
+What's the use in _tail? (It'll probably be useful in traversing backwards but we weren't assigned to do that yet)
 
 ALGO ADD
 check where we are adding.
-if 0 index just use add
-if adding to the end of the list, traverse until last node and set next node to new added node
+if 0 index just use add. (Add creates a new node with previousnode being null, nextnode being head. Then we reset head to be the new node.)
+if adding to the end of the list, traverse until last node and set next node to new added node. The new node should have a prevNode pointer to the last node before add happened. Move tail to new node.
 If in the middle, we need the information about the node currently at the index and the node at the index -1
 set the index -1 node's next node to the new added node. set the new added node's next node to the old node that was at the index.
+set the old node's prev node to the new node.
 
 ALGO REM
 Check where we are adding
-if index 0, then traverse the list one node but don't use a temp. Basically Set the head to the next node
-if last index, go to second to last node and set next node to NULL
+if index 0, then traverse the list one node but don't use a temp. Basically Set the head to the next node. Change the new 0 index node's prevNode to null.
+if last index, go to second to last node and set next node to NULL. Move tail
 If in the middle we need the node before and after the node at the index.
-set node at index - 1 next node to node at index + 1
+set node at index - 1 next node to node at index + 1. Set node at index +1 prev node to node at index -1
 */
 
 public class LList implements List //interface def must be in this dir
 {
 
   //instance vars
-  private LLNode _head;
+  private DLLNode _head;
   private int _size;
+  private DLLNode _tail;
 
   // constructor -- initializes instance vars
   public LList( )
   {
+    _tail = null;
     _head = null; //at birth, a list has no elements
     _size = 0;
   }
@@ -47,9 +53,16 @@ public class LList implements List //interface def must be in this dir
 
   public boolean add( String newVal )
   {
-    LLNode tmp = new LLNode( newVal, _head );
+    DLLNode tmp = new DLLNode(null, newVal, _head );
     _head = tmp;
     _size++;
+    DLLNode tmp2 = _head;
+
+    for(int i = 0; i < _size - 1; i++){
+        tmp2 = tmp2.getNext();                //After adding new node, traverse to end of list to set the last node as the tail
+    }
+    _tail = tmp2;
+
     return true;
   }
 
@@ -60,7 +73,7 @@ public class LList implements List //interface def must be in this dir
       throw new IndexOutOfBoundsException();
 
     String retVal;
-    LLNode tmp = _head; //create alias to head
+    DLLNode tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
@@ -78,7 +91,7 @@ public class LList implements List //interface def must be in this dir
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    LLNode tmp = _head; //create alias to head
+    DLLNode tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
@@ -98,11 +111,16 @@ public class LList implements List //interface def must be in this dir
   public int size() { return _size; }
 
   public String remove( int index ){
-      LLNode  tmp1 = _head;
-      LLNode tmp2 = _head;
+      DLLNode  tmp1 = _head;
+      DLLNode tmp2 = _head;
       String oldval = get(index);
 
-      if(index < _size && index > 0){                          //When index is in the middle
+      if(size() == 1){
+          _head = null;                                            //Special case when removing 1 element from size 1 list
+          _tail = null;
+          _size--;
+          return oldval;
+      }else if(index < _size - 1 && index > 0){                          //When index is in the middle
           for( int i=0; i < index - 1; i++ ){
             tmp1 = tmp1.getNext();
           }
@@ -111,6 +129,7 @@ public class LList implements List //interface def must be in this dir
             tmp2 = tmp2.getNext();
           }
           tmp1.setNext(tmp2);
+          tmp2.setPrev(tmp1);
           _size--;
           return oldval;
       }else if (index == _size - 1 ) {             //when index is the end
@@ -118,18 +137,20 @@ public class LList implements List //interface def must be in this dir
             tmp1 = tmp1.getNext();
           }
           tmp1.setNext(null);
+          _tail = tmp1;
           _size--;
           return oldval;
       }else{                                    // When index is first
           _head = _head.getNext();
+          _head.setPrev(null);
           _size--;
           return oldval;
       }
   }
 
   public void add( int index, String newVal ) {
-    LLNode tmp1 = _head;
-    LLNode tmp2 = _head;
+    DLLNode tmp1 = _head;
+    DLLNode tmp2 = _head;
 
       if(index == 0){                               //add at beginning
           add(newVal);
@@ -140,8 +161,9 @@ public class LList implements List //interface def must be in this dir
         for( int i=0; i < index - 1; i++ ){
           tmp1 = tmp1.getNext();
         }
-          tmp2 = new LLNode(newVal, null);
+          tmp2 = new DLLNode(tmp1, newVal, null);
           tmp1.setNext(tmp2);
+          _tail = tmp2;
           _size++;
 
       }else{                                            // add at middle
@@ -153,7 +175,9 @@ public class LList implements List //interface def must be in this dir
         for( int i=0; i < index ; i++ ){
           tmp2 = tmp2.getNext();
         }
-        tmp1.setNext(new LLNode(newVal, tmp2));
+        DLLNode tmp3 = new DLLNode(tmp1, newVal, tmp2);
+        tmp1.setNext(tmp3);
+        tmp2.setPrev(tmp3);
         _size++;
 
       }
@@ -169,17 +193,20 @@ public class LList implements List //interface def must be in this dir
   public String toString()
   {
     String retStr = "HEAD->";
-    LLNode tmp = _head; //init tr
+    DLLNode tmp = _head; //init tr
     while( tmp != null ) {
 	    retStr += tmp.getCargo() + "->";
 	    tmp = tmp.getNext();
     }
     retStr += "NULL";
+    retStr += "<- TAIL";
+
     return retStr;
   }
 
 
   //main method for testing
+  /*
   public static void main( String[] args )
   {
     LList james = new LList();
@@ -267,6 +294,6 @@ public class LList implements List //interface def must be in this dir
 
   }
 
-
+*/
 
 }//end class LList
