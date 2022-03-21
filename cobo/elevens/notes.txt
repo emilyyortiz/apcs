@@ -4,6 +4,15 @@ APCS pd6
 L07: But These Go Up To Eleven
 2022-03-18
 time spent: many hrs
+
+DISCO
+ List is an interface, but you're still allowed to say List ___ = new ArrayList() (see question below)
+GUI allows for graphics in Java.
+We learned how to play the card game elevens.
+
+QCC
+Is ArrayList different than List?
+
 */
 
 Activity 2:
