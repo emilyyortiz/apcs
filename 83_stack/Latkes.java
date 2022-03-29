@@ -1,3 +1,10 @@
+/*
+Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
+APCS pd6
+HW83: Stacks on Stacks
+2022-03-28
+time spent:  class time
+*/
 /***
  * class Latkes
  * v1
@@ -7,8 +14,12 @@
 
 /***
     DISCO
+    Push pops still exist
 
     QCC
+    What is the point of stacks?
+    In a trace diagram of the push and pop, when you push you are adding to the array after the last element(Like add in arraylist)
+    and pop removes whatever is the last element.
 
  **/
 
@@ -31,7 +42,7 @@ public class Latkes
   public void push( String s )
   {
     if (! isFull()){
-      _stack[_stackSize-1] = s;
+      _stack[_stackSize] = s;
       _stackSize ++;
     }
     // Do we throw an error if isFull() is true?
