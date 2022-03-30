@@ -3,7 +3,7 @@ Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauc
 APCS pd6
 HW84: Stack: What is it good for?
 2022-03-29
-time spent: __ hours
+time spent: 3 hours
 */
 
 /***
