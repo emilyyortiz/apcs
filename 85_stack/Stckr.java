@@ -13,6 +13,7 @@ time spent: _ hours
  **/
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Stckr
 {
