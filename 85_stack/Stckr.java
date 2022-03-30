@@ -23,6 +23,7 @@ public class Stckr
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // USAGE: un-comment exactly 1 assignment below
     Stack<Object> cakes = new ALStack();
+    //Stack<Z> cakes = new LLStack<Z>();
     cakes.push("a");
     cakes.push("b");
     cakes.push("c");
@@ -31,7 +32,13 @@ public class Stckr
     System.out.println(cakes.peekTop());
     cakes.pop();
     System.out.println(cakes);
-    //Stack<Z> cakes = new LLStack<Z>();
+    cakes.pop();
+    System.out.println(cakes);
+    cakes.pop();
+    System.out.println(cakes);
+    cakes.pop();
+    System.out.println(cakes);
+    System.out.println(cakes.isEmpty());
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //...
