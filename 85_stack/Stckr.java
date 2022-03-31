@@ -3,7 +3,7 @@ Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauc
 APCS pd6
 HW85: Leon Leonwood Stack
 2022-03-30
-time spent: _ hours
+time spent: 1.0 hours
 */
 
 /***
@@ -22,8 +22,8 @@ public class Stckr
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // USAGE: un-comment exactly 1 assignment below
-    Stack<Object> cakes = new ALStack();
-    //Stack<Z> cakes = new LLStack<Z>();
+    //Stack<Object> cakes = new ALStack<Object>();
+    Stack<Object> cakes = new LLStack<Object>();
     cakes.push("a");
     cakes.push("b");
     cakes.push("c");
@@ -40,8 +40,6 @@ public class Stckr
     System.out.println(cakes);
     System.out.println(cakes.isEmpty());
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    //...
 
   }//end main
 
