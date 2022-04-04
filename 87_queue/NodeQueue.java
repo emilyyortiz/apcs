@@ -31,31 +31,31 @@ public class NodeQueue<QUASAR> implements Queue<QUASAR> {
   public QUASAR dequeue() {                                       //traverse to end, get value , delete it
     LLNode<QUASAR> temp = _queue;
     QUASAR retVal = _queue.getCargo();;
-    // while (!(temp.getNext().getNext().equals(null))) {
-    //   temp = temp.getNext();
-    // }
-    // QUASAR ret = temp.getNext().getCargo();                //idk why this keeps hitting null pointer exception
-    // temp.setNext(null);
-    // return ret;
-
-    if(_qsize > 0){
-        if(_qsize == 1){
-          retVal = _queue.getCargo();
-          _queue = null;
-          _qsize --;
-          return retVal;
-        }else{
-          for( int i=0; i < _qsize -1; i++ ){
-              temp = temp.getNext();
-              retVal = temp.getCargo();
-          }
-          temp.setNext(null);
-          _qsize --;
-          return retVal;
-        }
-    }else{
-      return _queue.getCargo();
+    while (!(temp.getNext().getNext().equals(null))) {
+      temp = temp.getNext();
     }
+    QUASAR ret = temp.getNext().getCargo();                //idk why this keeps hitting null pointer exception
+    temp.setNext(null);
+    return ret;
+
+    // if(_qsize > 0){
+    //     if(_qsize == 1){
+    //       retVal = _queue.getCargo();
+    //       _queue = null;
+    //       _qsize --;
+    //       return retVal;
+    //     }else{
+    //       for( int i=0; i < _qsize -1; i++ ){
+    //           temp = temp.getNext();
+    //           retVal = temp.getCargo();
+    //       }
+    //       temp.setNext(null);
+    //       _qsize --;
+    //       return retVal;
+    //     }
+    // }else{
+    //   return _queue.getCargo();
+    // }
 
   }
 
