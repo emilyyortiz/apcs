@@ -17,4 +17,28 @@ QCC
 
 
 TRUBZ
-<this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
+<this lab involves using tools that are likely to floatroduce hiccups; log any troubleshooting issues here>
+
+Activity 2:
+1. Cereal
+3. public class Cereal
+4. 15 instance variables
+5. data types and names:
+String name;
+String type;
+float calories;
+float protein;
+float fat;
+float sodium;
+float fiber;
+float carbs;
+float sugar;
+float potassium;
+float vitamins;
+float shelf;
+float weight;
+float cups;
+float rating;
+8. Is there an easier and less repetitive way to write the Cereal class?
+9. Which cereal has the highest rating?
+10. You could make a compare method to test two cereals and returns the one with a higher rating.
