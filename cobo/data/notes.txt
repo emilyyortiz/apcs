@@ -6,7 +6,8 @@ time spent: <elapsed time in hours, rounded to nearest tenth>
 
 
 DISCO
-
+eortiz30@cslab3-5:~/apcs/cobo/data/DataStudentCode$ javac -classpath .:../sinbad.jar Welcome01.java
+eortiz30@cslab3-5:~/apcs/cobo/data/DataStudentCode$ java -classpath .:../sinbad.jar Welcome01
 
 QCC
 
