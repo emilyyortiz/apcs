@@ -1,0 +1,13 @@
+// Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz)
+// APCS Pd 6
+// HW91: Deque the Halls
+// 2022-04-13
+// Time Spent: 1.0 hrs
+
+DISCO
+* You can have a descending iterator!
+* When you push() onto a Dequey, it pushes to the head of the linked list.
+
+QCC:
+* A lot of the methods in Deque seem redundant. For example, what is the point
+of element() when you can just use peekFirst()?
