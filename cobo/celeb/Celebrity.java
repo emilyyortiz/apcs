@@ -8,18 +8,25 @@ public class Celebrity
 	/**
 	 * The clue to determine the celebrity
 	 */
-	
+	 private String celebClue;
+
 	/**
 	 * The answer or name of the celebrity.
 	 */
-	
+	 private String celebName;
+
+	 private String celebType;
+
 	/**
 	 * Creates a Celebrity instance with the supplied answer and clue
 	 * @param answer
 	 * @param clue
 	 */
-	public Celebrity(String answer, String clue)
+	public Celebrity(String answer, String clue, String type)
 	{
+		celebClue = clue;
+		celebName = answer;
+		celebType = type;
 	}
 
 	/**
@@ -28,7 +35,7 @@ public class Celebrity
 	 */
 	public String getClue()
 	{
-		return null;
+		return celebClue;
 	}
 
 	/**
@@ -37,7 +44,7 @@ public class Celebrity
 	 */
 	public String getAnswer()
 	{
-		return null;
+		return celebName;
 	}
 
 	/**
@@ -46,7 +53,7 @@ public class Celebrity
 	 */
 	public void setClue(String clue)
 	{
-		
+		celebClue = clue;
 	}
 
 	/**
@@ -55,16 +62,16 @@ public class Celebrity
 	 */
 	public void setAnswer(String answer)
 	{
-		
+		celebName = answer;
 	}
-	
+
 	/**
 	 * Provides a String representation of the Celebrity.
 	 */
 	@Override
 	public String toString()
 	{
-		return null;
+		return "The Celebrity is " + celebName + "!";
 	}
-	
+
 }

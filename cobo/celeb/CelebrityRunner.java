@@ -11,6 +11,9 @@ public class CelebrityRunner
 	 */
 	public static void main(String [] args)
 	{
-
+		CelebrityGame game = new CelebrityGame();
+		game.prepareGame();
+		game.addCelebrity("john cena", "u cant see him", "actor/wrestler");
+		game.play();
 	}
 }
