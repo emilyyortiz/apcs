@@ -1,0 +1,14 @@
+Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-16 mon
+time spent: 0.5 hrs
+
+If value is a leaf:
+- make that branch point to null instead
+
+If value is a single child:
+- set the parent node's child to the current node's child
+
+If value has a sibling:
+- traverse the tree and see where there is a leaf to point to that value's children

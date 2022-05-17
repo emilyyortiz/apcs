@@ -1,0 +1,14 @@
+Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-16 mon
+time spent: 0.5 hrs
+
+DISCO
+- minheaps have the smallest value at the top
+
+QCC
+- Could the right and left branches be for even and odd values?
+- Does a heap support duplicate values?
+- Do you place the values to optimize for binary search?
+  - Ex: If you have 1-7 with 1 at the top, do (2 3 4) go on the left and (5 6 7) go on the right?

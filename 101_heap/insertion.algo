@@ -1,0 +1,20 @@
+Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-16 mon
+time spent: 0.5 hrs
+
+If the value is less than the root:
+- create a new node with the value
+- set the left branch of the new node to the root
+- set the root to the new node
+
+If the value is the same as the root:
+- ???
+
+If the value is greater than the root:
+- keep going down the left branches until there is a spot for the value
+- if there is no spot, go to the first available right branch
+- clarification: 
+  - if all the left branches are filled, and the right of the root is filled
+  - go to the left branch of the first right branch
